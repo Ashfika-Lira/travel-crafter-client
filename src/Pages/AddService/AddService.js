@@ -1,35 +1,35 @@
+import axios from 'axios';
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
+// import './AddService.css';
 
 const AddService = () => {
-   const { register, handleSubmit, reset } = useForm();
-   const onSubmit = (data) => {
-      fetch('./service.json', {
-        //  method: 'POST',
-        //  headers: {
-        //     "content-type": "application/json"
-        //  },
-        //  body: JSON.stringify(data)
-      })
-         .then(res => res.json())
-         .then(data => {
-            alert('Data Send Successfully to The database')
-         });
-      reset();
-   };
-   return (
-      <div className='my-5'>
-         <h1>Add A Tour Place</h1>
-         <form className='d-flex justify-content-center' onSubmit={handleSubmit(onSubmit)}>
-            <div className='w-50 border border-success p-3 border-3 rounded'>
-               <input className='form-control mb-2 border border-info' {...register('name')} placeholder='Service Name' />
-               <input className='form-control mb-2 border border-info' {...register('Price')} type='number' placeholder='price' />
-               <input className='form-control mb-2 border border-info' {...register('img')} type='url' placeholder='image Url' />
-               <input className='btn btn-info' type="submit" />
-            </div>
-         </form>
-      </div>
-   );
+    const { register, handleSubmit, reset } = useForm();
+
+    const onSubmit = data => {
+        console.log(data);
+
+        axios.post('http://localhost:5000/packages', data)
+            .then(res => {
+                if (res.data.insertedId) {
+                    alert('added successfully');
+                    reset();
+                }
+            })
+    }
+
+    return (
+        <div className="add-service">
+            <h2>Please Add a Service</h2>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <input {...register("name", { required: true, maxLength: 20 })} placeholder="Name" />
+                <textarea {...register("description")} placeholder="Description" />
+                <input type="number" {...register("price")} placeholder="price" />
+                <input {...register("img")} placeholder="image url" />
+                <input type="submit" />
+            </form>
+        </div>
+    );
 };
 
 export default AddService;
