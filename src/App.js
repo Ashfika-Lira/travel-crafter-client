@@ -10,6 +10,7 @@ import Footer from './Pages/Shared/Footer/Footer';
 import NotFound from './Pages/NotFound/NotFound';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 import AddService from './Pages/AddService/AddService';
+import Services from './Pages/Services/Services';
 
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
             </Route>
             <PrivateRoute path='/addService'>
               <AddService></AddService>
+            </PrivateRoute>
+            <PrivateRoute path='/services'>
+              <Services></Services>
             </PrivateRoute>
             <Route path="*">
               <NotFound></NotFound>
