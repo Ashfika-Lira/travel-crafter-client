@@ -10,7 +10,7 @@ const TourDetails = () => {
 
    console.log(id)
    useEffect(() => {
-      fetch(`https://gentle-springs-26291.herokuapp.com/details/${id}`)
+      fetch(`https://gentle-springs-26291.herokuapp.com/services/${id}`)
          .then(res => res.json())
          .then(data => setDetails(data))
    }, [])
