@@ -9,7 +9,7 @@ const Orders = () => {
    const cart = getSavedCart();
    const names = Object.keys(cart)
    useEffect(() => {
-      fetch('https://gentle-springs-26291.herokuapp.com/orders', {
+      fetch('https://gentle-springs-26291.herokuapp.com/services', {
          method: 'POST',
          headers: {
             'content-type': 'application/json'
