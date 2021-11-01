@@ -11,6 +11,10 @@ import NotFound from './Pages/NotFound/NotFound';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 import AddService from './Pages/AddService/AddService';
 import Services from './Pages/Services/Services';
+import ControlOrders from './Pages/ControlOrders/ControlOrders';
+import TourDetails from './Pages/TourDetails/TourDetail';
+import Schedule from './Pages/Schedule/Schedule';
+import Orders from './Pages/Orders/Orders';
 
 
 function App() {
@@ -34,6 +38,18 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path='/services'>
               <Services></Services>
+            </PrivateRoute>
+            <PrivateRoute path='/order/control'>
+              <ControlOrders></ControlOrders>
+            </PrivateRoute>
+            <PrivateRoute path='/details/:id'>
+              <TourDetails></TourDetails>
+            </PrivateRoute>
+            <PrivateRoute path='/schedule'>
+              <Schedule></Schedule>
+            </PrivateRoute>
+            <PrivateRoute path='/orders'>
+              <Orders></Orders>
             </PrivateRoute>
             <Route path="*">
               <NotFound></NotFound>
