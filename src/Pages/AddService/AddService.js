@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react';
 import { useForm } from "react-hook-form";
 import './AddService.css';
@@ -9,15 +8,19 @@ const AddService = () => {
     const onSubmit = data => {
         console.log(data);
 
-        axios.post('http://localhost:5000/services', data)
-            .then(res => {
-               console.log(res)
-                if (res.data.insertedId) {
+        fetch('https://gentle-springs-26291.herokuapp.com/services', {
+        method: 'POST',
+        headers: {
+           "content-type": "application/json"
+        },
+        body: JSON.stringify(data)
+     })
+            .then(res => res.json())
+            .then(data => {
                     alert('added successfully');
+            });
                     reset();
-                }
-            })
-    }
+                };
 
     return (
         <div className="add-service">
@@ -34,3 +37,4 @@ const AddService = () => {
 };
 
 export default AddService;
+
